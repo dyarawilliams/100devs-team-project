@@ -4,7 +4,7 @@ module.exports = {
     getStudies: async (req,res)=>{
         console.log(req.user)
         try{
-            const studyItems = await Study.find({userId:req.user.id})
+            const studyItems = await Study.find({userId:req.user.id}).sort({dueDate: 1})
             const itemsLeft = await Study.countDocuments({userId:req.user.id,completed: false})
             const itemsCompleted = await Study.countDocuments({userId:req.user.id,completed: true})
             res.render('studies.ejs', {title: 'Your Progress', isAuth: req.isAuthenticated(), studies: studyItems, left: itemsLeft, finished: itemsCompleted, user: req.user})
@@ -52,5 +52,14 @@ module.exports = {
         }catch(err){
             console.log(err)
         }
-    }
+    },
+    editStudy: async (req, res) => {
+        let studyId = sessionStorage.getItem("StudyId")
+        try {
+            Study = await Study.findOneAndUpdate({_id:studyId})
+            console.log(studyId)
+        } catch (err) {
+            console.log(err)
+        }
+    },
 }    
