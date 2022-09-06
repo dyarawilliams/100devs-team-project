@@ -20,9 +20,25 @@ Array.from(editStudyBtn).forEach((el)=>{
     el.addEventListener('click', editStudy)
 })
 
-function editStudy(){
-    console.log('saved')
-    sessionStorage.setItem("StudyId", this.closest('section').dataset.id)
+async function editStudy(){
+    console.log('Im Reading a editStudy Function')
+    // sessionStorage.setItem("StudyId", this.closest('section').dataset.id)
+    const studyId = this.closest('section').dataset.id
+    try {
+        const response = await fetch('studies/editStudy', {
+            method: 'post',
+            headers: {'Content-type': 'application/json'},
+            body: JSON.stringify({
+                'studyIdFromJSFile': studyId,
+            })
+        })
+        console.log(response)
+        const data = await response.json()
+        console.log(data)
+        location.reload()
+    }catch(err){
+        console.log(err)
+    }
 }
 
 async function deleteStudy(){

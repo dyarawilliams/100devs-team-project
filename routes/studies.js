@@ -11,7 +11,7 @@ router.put('/markComplete', studiesController.markComplete)
 
 router.put('/markIncomplete', studiesController.markIncomplete)
 
-router.put('/editStudy', studiesController.editStudy)
+router.post('/editStudy', studiesController.editStudy)
 
 router.delete('/deleteStudy', studiesController.deleteStudy)
 

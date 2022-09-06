@@ -20,8 +20,8 @@ return str
             <span class="add-note-text"><i class="fa fa-plus"></i> Add Note</span>
         </button>
     </div>
-    <%- include('modals/_add_study') %>
 
+    <%- include('modals/_add_study') %>
 
     <div class="container pt-3">
         <% if(left>0){%>
@@ -41,44 +41,32 @@ return str
                     <div class="study-open-button">
                         <i class="fa fa-plus"></i>
                     </div>
-                    <!-- Modal Start -->
-
-                    <div id="simpleModal" class="modal modal-overlay-card">
+                    
+                    <!-- Edit Studies In Progress Modal Start -->
+                    <div id="simpleModal2" class="modal modal-overlay-card">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h2 class="modal-title">Edit Item</h2>
                                 <span class="closeBtn btn-close"></span>
                             </div>
                             <div class="modal-body">
-
-
-                                <form id="modal-input-form" action="/studies/editStudy?_method=PUT" method='POST'>
-               
+                                <form id="modal-input-form" action="/studies/editStudy" method='POST'>
+                                    <!-- action="/studies/editStudy?_method=PUT" -->
                                     <input id="modal-input-title" type="text" value="<%= el.studyItem %>" name='studyItem'
                                     class="w-100">
-                                    <input type="date" value="<%=  el.dueDate ? el.dueDate.toLocaleDateString() : 'No Due Date'  %>" name='dueDate'
+                                    <input id="modal-input-dueDate" type="date" value="<%=  el.dueDate ? el.dueDate.toLocaleDateString() : 'No Due Date'  %>" name='dueDate'
                                     class="w-100">
-                                    <textarea name="textArea" id="" cols="30" rows="10" class="w-100"
+                                    <textarea id="modal-input-textArea" name="textArea" id="" cols="30" rows="10" class="w-100"
                                     placeholder="<%= el.textArea%>" value="<%= el.textArea%>" maxlength="250"></textarea>
-
-                                    <input type="submit" class="editBtn"> 
+                                    <input type="submit" class="editBtn" value="Update"> 
                                     <!-- <input type="submit"> CHANGE TO PUT!!! currently will add a new entry -->
-
                                 </form>
-
-
-                            </div>
-                            <div class="modal-footer">
-                                <h3>Footer</h3>
                             </div>
                         </div>
                     </div>
-
-
-                    <!-- Modal End -->
+                    <!-- Edit Studies In Progress Modal End -->
                     <div class="d-flex align-items-center justify-content-around">
-                        <span class='mark-complete'><i class="fa fa-check-square-o"></i>Mark Complete
-                        </span>
+                        <span class='mark-complete'><i class="fa fa-check-square-o"></i>Mark Complete</span>
                         <span class="del"><i class="fa fa-trash remove-note"></i>Delete</span>
                     </div>
                 </section>
@@ -86,6 +74,7 @@ return str
             <% }) %>
         </div>
         <%};%>
+
         <% if(finished>0){%>
         <!-- Completed Studies Section  -->
         <h3>Completed Studies</h3>
@@ -107,9 +96,8 @@ return str
                         <i class="fa fa-plus"></i>
                     </div>
 
-                    <!-- Modal Start-->
-
-                    <div id="simpleModal" class="modal modal-overlay-card">
+                    <!-- Edit Completed Study Modal Start-->
+                    <div id="simpleModal3" class="modal modal-overlay-card">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h2 class="modal-title">Edit Item</h2>

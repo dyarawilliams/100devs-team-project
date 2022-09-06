@@ -54,10 +54,16 @@ module.exports = {
         }
     },
     editStudy: async (req, res) => {
-        let studyId = sessionStorage.getItem("StudyId")
+        console.log('Edit Button CLICKED')
+        // let studyId = sessionStorage.getItem("StudyId")
         try {
-            Study = await Study.findOneAndUpdate({_id:studyId})
-            console.log(studyId)
+            const id = req.body.studyIdFromJSFile
+            const updates = req.body
+            const options = { new: true }
+            const result = await Study.findOneAndUpdate(id, updates, options)
+            console.log(id, updates, options)
+            res.redirect('/studies')
+            console.log('Study has been edited')
         } catch (err) {
             console.log(err)
         }
