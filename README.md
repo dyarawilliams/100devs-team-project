@@ -58,16 +58,13 @@ See the [open issues](https://github.com/dyarawilliams/100devs-team-project/issu
 
 ## Credits
 
-#Collaborators
+### Collaborators
 
-[dyarawilliams](https://github.com/dyarawilliams)
+<a href="https://github.com/dyarawilliams/study-buddy/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=dyarawilliams/study-buddy" />
+</a>
 
-[pcabezal](https://github.com/pcabezal)
-
-[JoJava25](https://github.com/JoJava25)
-
-[pbanigo](https://github.com/pbanigo)
-
+Made with [contrib.rocks](https://contrib.rocks).
  
 # Packages/Dependencies used 
 
